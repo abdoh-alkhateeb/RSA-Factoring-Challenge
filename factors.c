@@ -30,6 +30,6 @@ int main(int argc, char *argv[])
 		}
 
 		if (i == j)
-			printf("%llu=%llu*%llu\n", number, number, 1);
+			printf("%llu=%llu*%i\n", number, number, 1);
 	}
 }
