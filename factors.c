@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 
 int main(int argc, char *argv[])
 {
@@ -11,15 +10,16 @@ int main(int argc, char *argv[])
 	}
 
 	FILE *fp = fopen(argv[1], "r");
-	char *line = NULL;
-	char *p = NULL;
+	char *line = NULL, *p = NULL;
 	size_t size = 1024;
 	unsigned long long number, i, j;
 
 	while (getline(&line, &size, fp) != EOF)
 	{
 		number = strtoull(line, &p, 10);
-		j = (unsigned long long)sqrt(number);
+
+		j = number / 2;
+
 		for (i = 2; i < j; i++)
 		{
 			if (number % i == 0)
@@ -28,5 +28,8 @@ int main(int argc, char *argv[])
 				break;
 			}
 		}
+
+		if (i == j)
+			printf("%llu=%llu*%llu\n", number, number, 1);
 	}
 }
